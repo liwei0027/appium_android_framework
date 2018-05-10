@@ -8,6 +8,7 @@ from selenium.webdriver.support import expected_conditions as EC#条件判断@
 class LoginPage:
     #获取登录页面所有的页面元素信息
     def __init__(self):
+        #获取driver信息
         base_driver=BaseDriver()
         self.driver=base_driver.android_driver()
         self.get_by_local=GetByLocal(self.driver)

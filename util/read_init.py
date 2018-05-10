@@ -1,5 +1,5 @@
 #coding=utf-8
-import ConfigParser
+import ConfigParser#configParser 模块用于操作配置文件
 
 class ReadIni:
     def __init__(self,file_path=None):
@@ -26,4 +26,4 @@ class ReadIni:
         return value
 if __name__=='__main__':
     read_ini=ReadIni()
-    print read_ini.get_value("password")
+    #print read_ini.get_value("password")
