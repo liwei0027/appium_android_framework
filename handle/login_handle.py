@@ -2,8 +2,8 @@
 from page.login_page import LoginPage
 
 class LoginHandle:
-    def __init__(self,i):
-        self.login_page=LoginPage(i)
+    def __init__(self):
+        self.login_page=LoginPage()
 
     #操作登录页面的元素
     def click_merchant(self):
@@ -26,7 +26,7 @@ class LoginHandle:
         输入帐号
         :return:
         '''
-        self.login_page.get_phoneNum_element().sendkeys(phoneNum)
+        self.login_page.get_phoneNum_element().send_keys(phoneNum)
 
 
 
@@ -35,7 +35,7 @@ class LoginHandle:
         输入密码
         :return:
         '''
-        self.login_page.get_password_element().sendkeys(password)
+        self.login_page.get_password_element().send_keys(password)
 
 
     def send_operatorId(self,operatorId):
@@ -43,7 +43,7 @@ class LoginHandle:
         输入收银员编号
         :return:
         '''
-        self.login_page.get_operatorId_element().sendkeys(operatorId)
+        self.login_page.get_operatorId_element().send_keys(operatorId)
 
 
     def click_loginButton(self):

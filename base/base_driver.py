@@ -11,11 +11,12 @@ class BaseDriver:
 
         capabilities = {
             "platformName": "Android",
-            "automationName": "UiAutomator2",
+         #   "automationName": "UiAutomator2",
             "deviceName": "OneOlus X",
             "platformVersion": "5.1.1",
             "appPackage": "in.haojin.nearbymerchant",
-            "appActivity": "in.haojin.nearbymerchant.ui.activity.WelcomeActivity"}
+            "appActivity": "in.haojin.nearbymerchant.ui.activity.WelcomeActivity"
+          }
         driver = webdriver.Remote('http://localhost:4723/wd/hub', capabilities)
         #driver=webdriver.Remote("http://localhost:"+port+"/wd/hub",capabilities)
         time.sleep(10)

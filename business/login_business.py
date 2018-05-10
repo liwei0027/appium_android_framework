@@ -1,11 +1,11 @@
 #coding=utf-8
 from handle.login_handle import LoginHandle
 class LoginBusiness:
-    def __init__(self,i):
-        self.login_handle=LoginHandle(i)
+    def __init__(self):
+        self.login_handle=LoginHandle()
 
     def login_pass(self):
-        self.login_handle.click_merchant()
+        #self.login_handle.click_merchant()
         self.login_handle.send_phoneNum('17600695527')
         self.login_handle.send_password('123456')
         self.login_handle.click_loginButton()
