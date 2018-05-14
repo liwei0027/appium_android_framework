@@ -2,8 +2,8 @@
 from page.login_page import LoginPage
 
 class LoginHandle:
-    def __init__(self):
-        self.login_page=LoginPage()
+    def __init__(self,i):
+        self.login_page=LoginPage(i)
 
     #操作登录页面的元素
     def click_merchant(self):

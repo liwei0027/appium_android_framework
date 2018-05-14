@@ -8,6 +8,8 @@ import time
 class Server:
     def __init__(self):
         self.dos = DosCmd()
+        self.device_list=self.get_devices()
+        self.write_file = WriteUserCommand()
     def get_devices(self):
         """
         获取设备信息
@@ -38,7 +40,7 @@ class Server:
 
     def create_command_list(self):
         #appium -p 4700 -bp 4701 -u 37b34d04
-        write_file=WriteUserCommand()
+
         command_list=[]
         appium_port_list=self.create_port_list(4700)
         bootstrap_port_list=self.create_port_list(4900)
@@ -46,7 +48,7 @@ class Server:
         for i in range(len(device_list)):
             command="appium -p "+str(appium_port_list[i])+" -bp "+str(bootstrap_port_list[i])+" -U "+device_list[i]+" --no-reset --session-override"
             command_list.append(command)
-            write_file.write_data(i,device_list[i],str(bootstrap_port_list[i]),str(appium_port_list[i]))
+            self.write_file.write_data(i,device_list[i],str(bootstrap_port_list[i]),str(appium_port_list[i]))
         return command_list
     def start_server(self,i):
         self.start_list=self.create_command_list()
@@ -61,6 +63,7 @@ class Server:
 
     def main(self):
         self.kill_server()
+        self.write_file.clear_data()
         for i in range(len(self.create_command_list())):
             appium_start=threading.Thread(target=self.start_server,args=(i,))
             appium_start.start()

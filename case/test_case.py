@@ -7,15 +7,23 @@ import HTMLTestRunner
 import threading
 from appium import webdriver
 from business.login_business import LoginBusiness
-class CaseTeat(unittest.TestCase):
+
+class ParameTestCase(unittest.TestCase):
+    def __init__(self,methodName='runTest',parame=None):
+        super(ParameTestCase,self).__init__(methodName)
+        self.parame=parame
+
+
+
+class CaseTeat(ParameTestCase):
     @classmethod
     def setUpClass(cls):
         print "this is class"
-        cls.login_business=LoginBusiness()
+        cls.login_business=LoginBusiness(i)
     def setUp(self):#自带
         print "this is setup\n"
     def test_01(self):
-        print "this is case 01"
+        print "这个是测试方法里面的：", self.parame
         self.login_business.login_pass()
         print"登录成功，测试通过"
  #   unittest.skip()
@@ -29,8 +37,8 @@ class CaseTeat(unittest.TestCase):
 
 def get_suite(i):
     suite=unittest.TestSuite()
-    suite.addTest(CaseTeat("test_02"))
-    suite.addTest(CaseTeat("test_01"))
+    suite.addTest(CaseTeat("test_02",parame=i))
+    suite.addTest(CaseTeat("test_01",parame=i))
     unittest.TextTestRunner().run(suite)
     # html_file="D:/PycharmProjects/appium_android_framework/report/report.html"
     # fp=file(html_file,"wb")

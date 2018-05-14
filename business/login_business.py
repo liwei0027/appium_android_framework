@@ -1,8 +1,8 @@
 #coding=utf-8
 from handle.login_handle import LoginHandle
 class LoginBusiness:
-    def __init__(self):
-        self.login_handle=LoginHandle()
+    def __init__(self,i):
+        self.login_handle=LoginHandle(i)
 
     def login_pass(self):
         #self.login_handle.click_merchant()

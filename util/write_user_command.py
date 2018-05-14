@@ -43,6 +43,11 @@ class WriteUserCommand:
         }
         return data
 
+    def clear_data(self):
+        with open("D:/PycharmProjects/appium_android_framework/config/userconfig.yaml", "w") as fr:
+            fr.truncate()
+        fr.close()
+
 
 if __name__=='__main__':
     write_file=WriteUserCommand()

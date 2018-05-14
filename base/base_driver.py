@@ -1,13 +1,16 @@
 #coding=utf-8
 import time
 from appium import webdriver
-
+from util.write_user_command import WriteUserCommand
 class BaseDriver:
-    def android_driver(self):
+    def android_driver(self,i,):
         #print "this is android_driver"
         #adb devices 显示devices_name
         #port
-    #    write_file=WriteUserCommand()
+        write_file=WriteUserCommand()
+        devices=write_file.get_value('user_info_'+str(i)+'deviceName')
+        port=write_file.get_value('user_info_'+str(i),'port')
+
 
         capabilities = {
             "platformName": "Android",
@@ -18,8 +21,8 @@ class BaseDriver:
             "appActivity": "in.haojin.nearbymerchant.ui.activity.WelcomeActivity"
 
           }
-        driver = webdriver.Remote('http://localhost:4723/wd/hub', capabilities)
-        #driver=webdriver.Remote("http://localhost:"+port+"/wd/hub",capabilities)
+
+        driver=webdriver.Remote("http://localhost:"+port+"/wd/hub",capabilities)
         time.sleep(10)
         return driver
 
