@@ -26,7 +26,7 @@ class WriteUserCommand:
         :return:
         '''
         data=self.join_data(i,device,bp,port)
-        with open("D:/PycharmProjects/appium_android_framework/config/userconfig.yaml") as fr:
+        with open("D:/PycharmProjects/appium_android_framework/config/userconfig.yaml","a") as fr:
             yaml.dump(data,fr)
 
     def join_data(self,i,device,bp,port):
