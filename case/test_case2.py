@@ -4,7 +4,8 @@ sys.path.append("D:/PycharmProjects/appium_android_framework")
 import unittest
 import threading
 import HTMLTestRunner
-import threading
+import threading#多线程
+import multiprocessing#多进程
 from appium import webdriver
 from business.login_business import LoginBusiness
 from util.write_user_command import WriteUserCommand
@@ -67,7 +68,7 @@ if __name__ == '__main__':
     threads=[]
     for i in range(get_count()):
         print i
-        t=threading.Thread(target=get_suite,args=(i,))
+        t=multiprocessing.Process(target=get_suite,args=(i,))
         threads.append(t)
     for j in threads:
         j.start()
