@@ -7,35 +7,44 @@ import HTMLTestRunner
 import threading
 from appium import webdriver
 from business.login_business import LoginBusiness
+from util.write_user_command import WriteUserCommand
+from util.server import Server
+import time
 
 class ParameTestCase(unittest.TestCase):
     def __init__(self,methodName='runTest',parame=None):
         super(ParameTestCase,self).__init__(methodName)
         self.parame=parame
+        global parames
+        parames=parame
 
 
 
 class CaseTeat(ParameTestCase):
     @classmethod
     def setUpClass(cls):
-        print "this is class"
-        cls.login_business=LoginBusiness(i)
-    def setUp(self):#自带
+        print "setUpclass--->",parames
+        cls.login_business=LoginBusiness(parames)
+    def setUp(self):#
         print "this is setup\n"
     def test_01(self):
-        print "这个是测试方法里面的：", self.parame
+        print "this is case 1--->：",parames
         self.login_business.login_pass()
         print"登录成功，测试通过"
  #   unittest.skip()
     def test_02(self):
-        print "this is case 2"
+        print "this is case 2\n"
     def tearDown(self):
-        print "this is teardown"
+        print "this is teardown\n"
     @classmethod
     def tearDownClass(cls):
-        print "this is class teardaom"
+        print "this is class teardown\n"
+def appium_init():
+    server=Server()
+    server.main()
 
 def get_suite(i):
+    print "get_suite里面的",i
     suite=unittest.TestSuite()
     suite.addTest(CaseTeat("test_02",parame=i))
     suite.addTest(CaseTeat("test_01",parame=i))
@@ -45,6 +54,7 @@ def get_suite(i):
     # HTMLTestRunner.HTMLTestRunner(fp).run(suite)
 
 if __name__ == '__main__':
+    appium_init()
     threads=[]
     for i in range(2):
         print i

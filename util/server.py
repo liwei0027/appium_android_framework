@@ -67,6 +67,7 @@ class Server:
         for i in range(len(self.create_command_list())):
             appium_start=threading.Thread(target=self.start_server,args=(i,))
             appium_start.start()
+        time.sleep(20)
 
 
 if __name__=='__main__':
