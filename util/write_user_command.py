@@ -47,7 +47,13 @@ class WriteUserCommand:
         with open("D:/PycharmProjects/appium_android_framework/config/userconfig.yaml", "w") as fr:
             fr.truncate()
         fr.close()
-
+    def get_file_lines(self):
+        '''
+        获取数据行数
+        :return:
+        '''
+        data=self.read_data()
+        return len(data)
 
 if __name__=='__main__':
     write_file=WriteUserCommand()

@@ -33,7 +33,10 @@ class CaseTeat(ParameTestCase):
         print"登录成功，测试通过"
  #   unittest.skip()
     def test_02(self):
-        print "this is case 2\n"
+        print "this is case 2--->",parames
+        self.login_business.login_phone_error()
+        print"您的帐号未注册，请先注册一下吧"
+        print"登录失败，测试通过"
     def tearDown(self):
         print "this is teardown\n"
     @classmethod
@@ -48,15 +51,21 @@ def get_suite(i):
     suite=unittest.TestSuite()
     suite.addTest(CaseTeat("test_02",parame=i))
     suite.addTest(CaseTeat("test_01",parame=i))
-    unittest.TextTestRunner().run(suite)
-    # html_file="D:/PycharmProjects/appium_android_framework/report/report.html"
-    # fp=file(html_file,"wb")
-    # HTMLTestRunner.HTMLTestRunner(fp).run(suite)
+  #  unittest.TextTestRunner().run(suite)
+    html_file="D:/PycharmProjects/appium_android_framework/report/"+str(i)+".html"
+    fp=file(html_file,"wb")
+    HTMLTestRunner.HTMLTestRunner(stream=fp).run(suite)
+
+def get_count():
+    write_user_file=WriteUserCommand()
+    count=write_user_file.get_file_lines()
+    return count
+
 
 if __name__ == '__main__':
     appium_init()
     threads=[]
-    for i in range(2):
+    for i in range(get_count()):
         print i
         t=threading.Thread(target=get_suite,args=(i,))
         threads.append(t)
