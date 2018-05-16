@@ -5,6 +5,7 @@ import unittest
 import threading
 import HTMLTestRunner
 import threading
+import multiprocessing#多进程
 from appium import webdriver
 from business.login_business import LoginBusiness
 from util.write_user_command import WriteUserCommand
@@ -52,7 +53,7 @@ def get_suite(i):
     suite.addTest(CaseTeat("test_02",parame=i))
     suite.addTest(CaseTeat("test_01",parame=i))
   #  unittest.TextTestRunner().run(suite)
-    html_file="D:/PycharmProjects/appium_android_framework/report/"+str(i)+".html"
+    html_file="D:/PycharmProjects/appium_android_framework/report/report"+str(i)+".html"
     fp=file(html_file,"wb")
     HTMLTestRunner.HTMLTestRunner(stream=fp).run(suite)
 
@@ -67,7 +68,7 @@ if __name__ == '__main__':
     threads=[]
     for i in range(get_count()):
         print i
-        t=threading.Thread(target=get_suite,args=(i,))
+        t=multiprocessing.Process(target=get_suite,args=(i,))
         threads.append(t)
     for j in threads:
         j.start()
