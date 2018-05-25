@@ -2,10 +2,11 @@
 import time
 from appium import webdriver
 capabilities={
-    "platformName":"Android", #    "deviceName":"OnePlus X",
-    "deviceName":"9509426",
-  #  "platformVersion":"5.1.1",
-    "platformVersion":"7.1.1",
+    "platformName":"Android",
+    "deviceName":"OnePlus X",
+   # "deviceName":"9509426",
+    "platformVersion":"5.1.1",
+   # "platformVersion":"7.1.1",
     "appPackage":"in.haojin.nearbymerchant",
     "appActivity":"in.haojin.nearbymerchant.ui.activity.WelcomeActivity"
 }
