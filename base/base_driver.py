@@ -18,7 +18,9 @@ class BaseDriver:
             "deviceName": devices,
             "platformVersion": "7.1.1",
             "appPackage": "in.haojin.nearbymerchant",
-            "appActivity": "in.haojin.nearbymerchant.ui.activity.WelcomeActivity"
+            "appActivity": "in.haojin.nearbymerchant.ui.activity.WelcomeActivity",
+            "unicodeKeyboard": "True",
+            "resetKeyboard":"True"
 
           }
 

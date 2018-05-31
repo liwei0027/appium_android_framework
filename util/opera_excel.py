@@ -11,7 +11,20 @@ class OperaExcel:
             self.file_path='D:/PycharmProjects/appium_android_framework/config/case.xlsx'
         else:
             self.file_path=self.get_excel()
+        self.excel=self.get_excel()
 
     def get_excel(self):
+        '''
+        获取excel
+        :return:
+        '''
         excel = xlrd.open_workbook(self.file_path)
         return excel
+    def get_sheets(self,i):
+        '''
+        获取sheets的内容
+        :return:
+        '''
+        tables=self.excel.sheets()[i]
+        return tables
+
